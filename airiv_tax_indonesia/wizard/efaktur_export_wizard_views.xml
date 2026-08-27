@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_airiv_efaktur_export_wizard_form" model="ir.ui.view">
+            <field name="name">airiv.efaktur.export.wizard.form</field>
+            <field name="model">airiv.efaktur.export.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Export DJP e-Faktur 4.0 / Coretax CSV">
+                    <sheet>
+                        <group>
+                            <group string="Tax Period Filter">
+                                <field name="date_from"/>
+                                <field name="date_to"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Invoices Included">
+                                <field name="invoice_ids">
+                                    <list>
+                                        <field name="name"/>
+                                        <field name="partner_id"/>
+                                        <field name="invoice_date"/>
+                                        <field name="l10n_id_faktur_pajak_number"/>
+                                        <field name="amount_untaxed" string="DPP"/>
+                                        <field name="amount_tax" string="PPN"/>
+                                        <field name="amount_total"/>
+                                        <field name="l10n_id_efaktur_status"/>
+                                    </list>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <footer>
+                        <button name="action_generate_csv" string="Generate &amp; Download CSV" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_airiv_efaktur_export_wizard" model="ir.actions.act_window">
+            <field name="name">Export e-Faktur CSV</field>
+            <field name="res_model">airiv.efaktur.export.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_airiv_nsfp_range_tree" model="ir.ui.view">
+            <field name="name">airiv.nsfp.range.list</field>
+            <field name="model">airiv.nsfp.range</field>
+            <field name="arch" type="xml">
+                <list string="NSFP Quota Pools">
+                    <field name="name"/>
+                    <field name="year"/>
+                    <field name="prefix"/>
+                    <field name="start_number"/>
+                    <field name="end_number"/>
+                    <field name="current_number"/>
+                    <field name="total_quota"/>
+                    <field name="used_quota"/>
+                    <field name="remaining_quota" widget="progressbar"/>
+                    <field name="active"/>
+                </list>
+            </field>
+        </record>
+
+        <record id="view_airiv_nsfp_range_form" model="ir.ui.view">
+            <field name="name">airiv.nsfp.range.form</field>
+            <field name="model">airiv.nsfp.range</field>
+            <field name="arch" type="xml">
+                <form string="NSFP Allocation Range">
+                    <sheet>
+                        <group>
+                            <group string="e-Nofa Surat Keputusan (SK)">
+                                <field name="name"/>
+                                <field name="year"/>
+                                <field name="prefix"/>
+                                <field name="active"/>
+                            </group>
+                            <group string="Serial Sequence Range">
+                                <field name="start_number"/>
+                                <field name="end_number"/>
+                                <field name="current_number"/>
+                            </group>
+                        </group>
+                        <group string="Usage Quota Statistics">
+                            <group>
+                                <field name="total_quota"/>
+                                <field name="used_quota"/>
+                                <field name="remaining_quota"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_airiv_nsfp_range" model="ir.actions.act_window">
+            <field name="name">NSFP Tax Serial Ranges</field>
+            <field name="res_model">airiv.nsfp.range</field>
+            <field name="view_mode">list,form</field>
+        </record>
+    </data>
+</odoo>

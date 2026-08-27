@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="tax_group_ppn" model="account.tax.group">
+            <field name="name">PPN</field>
+            <field name="sequence">10</field>
+            <field name="country_id" ref="base.id"/>
+        </record>
+
+        <record id="tax_group_pph" model="account.tax.group">
+            <field name="name">PPh</field>
+            <field name="sequence">20</field>
+            <field name="country_id" ref="base.id"/>
+        </record>
+
+        <record id="tax_ppn_12_sale" model="account.tax">
+            <field name="name">PPN Keluaran 12% (UU HPP / Coretax)</field>
+            <field name="type_tax_use">sale</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">12.0</field>
+            <field name="description">PPN 12%</field>
+            <field name="tax_group_id" ref="tax_group_ppn"/>
+            <field name="country_id" ref="base.id"/>
+        </record>
+
+        <record id="tax_ppn_12_purchase" model="account.tax">
+            <field name="name">PPN Masukan 12% Dapat Dikreditkan</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">12.0</field>
+            <field name="description">PPN 12%</field>
+            <field name="tax_group_id" ref="tax_group_ppn"/>
+            <field name="country_id" ref="base.id"/>
+        </record>
+
+        <record id="tax_ppn_dpp_nilai_lain_sale" model="account.tax">
+            <field name="name">PPN Keluaran 12% (DPP Nilai Lain - Efektif 11%)</field>
+            <field name="type_tax_use">sale</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">11.0</field>
+            <field name="description">PPN DPP Nilai Lain (11%)</field>
+            <field name="tax_group_id" ref="tax_group_ppn"/>
+            <field name="country_id" ref="base.id"/>
+        </record>
+
+        <record id="tax_pph_23_sale" model="account.tax">
+            <field name="name">PPh Pasal 23 Jasa (Potongan 2%)</field>
+            <field name="type_tax_use">sale</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">-2.0</field>
+            <field name="description">PPh 23 (2%)</field>
+            <field name="tax_group_id" ref="tax_group_pph"/>
+            <field name="country_id" ref="base.id"/>
+        </record>
+    </data>
+</odoo>

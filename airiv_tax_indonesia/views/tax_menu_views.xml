@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="action_account_move_faktur_pajak" model="ir.actions.act_window">
+            <field name="name">Faktur Pajak Keluaran</field>
+            <field name="res_model">account.move</field>
+            <field name="view_mode">list,form</field>
+            <field name="domain">[('move_type', '=', 'out_invoice')]</field>
+            <field name="context">{'default_move_type': 'out_invoice'}</field>
+        </record>
+
+        <record id="action_partner_tax_profiles" model="ir.actions.act_window">
+            <field name="name">Tax Entities (NPWP 16 / NIK)</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">list,form</field>
+        </record>
+
+        <menuitem id="menu_airiv_tax_root"
+                  name="Indonesian Taxation"
+                  action="action_account_move_faktur_pajak"
+                  web_icon="airiv_tax_indonesia,static/description/icon.png"
+                  sequence="38"
+                  groups="account.group_account_invoice"/>
+
+        <menuitem id="menu_airiv_tax_operations"
+                  name="Faktur Pajak &amp; Coretax"
+                  parent="menu_airiv_tax_root"
+                  sequence="10"/>
+
+        <menuitem id="menu_airiv_tax_invoices"
+                  name="Faktur Pajak Keluaran"
+                  parent="menu_airiv_tax_operations"
+                  action="action_account_move_faktur_pajak"
+                  sequence="1"/>
+
+        <menuitem id="menu_airiv_tax_export"
+                  name="Export e-Faktur CSV"
+                  parent="menu_airiv_tax_operations"
+                  action="action_airiv_efaktur_export_wizard"
+                  sequence="2"/>
+
+        <menuitem id="menu_airiv_tax_partners"
+                  name="Customer Tax Profiles"
+                  parent="menu_airiv_tax_operations"
+                  action="action_partner_tax_profiles"
+                  sequence="3"/>
+
+        <menuitem id="menu_airiv_tax_config"
+                  name="Configuration"
+                  parent="menu_airiv_tax_root"
+                  sequence="20"/>
+
+        <menuitem id="menu_airiv_tax_nsfp"
+                  name="NSFP Serial Pools"
+                  parent="menu_airiv_tax_config"
+                  action="action_airiv_nsfp_range"
+                  sequence="1"/>
+    </data>
+</odoo>

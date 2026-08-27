@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_partner_form_indonesia_tax" model="ir.ui.view">
+            <field name="name">res.partner.form.indonesia.tax</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page string="DJP Coretax &amp; NPWP" name="indonesia_tax_page">
+                        <group>
+                            <group string="DJP Coretax Identification">
+                                <field name="l10n_id_tax_type"/>
+                                <field name="l10n_id_npwp16" placeholder="16 Digits NIK / NPWP"/>
+                                <field name="l10n_id_nitku" placeholder="22 Digits (Branch Office)"/>
+                            </group>
+                            <group string="Faktur Pajak Registered Data">
+                                <field name="l10n_id_tax_name" placeholder="Official SPPKP Name"/>
+                                <field name="l10n_id_tax_address" placeholder="Official Registered Tax Address"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

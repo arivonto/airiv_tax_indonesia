@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_airiv_nsfp_range_user,airiv.nsfp.range.user,model_airiv_nsfp_range,account.group_account_invoice,1,1,1,1
+access_airiv_efaktur_wizard_user,airiv.efaktur.export.wizard.user,model_airiv_efaktur_export_wizard,account.group_account_invoice,1,1,1,1
