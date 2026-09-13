@@ -1,65 +1,27 @@
-# Indonesia DJP Coretax & e-Faktur Tax Compliance (PPN 12%, DPP Nilai Lain, 16-Digit NPWP/NIK)
+# Indonesia DJP Coretax & e-Faktur Tax Engine (PPN 12%, DPP Nilai Lain, 16-Digit NPWP/NIK)
 
-[![License: LGPL-3](https://img.shields.io/badge/License-LGPL--3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)
-[![Odoo: 18.0 Community](https://img.shields.io/badge/Odoo-18.0%20Community-purple.svg)](https://www.odoo.com)
-[![Price: Free ($0.00)](https://img.shields.io/badge/Price-%240.00%20(Free)-green.svg)](https://airiv.id)
-[![Target: DJP Coretax](https://img.shields.io/badge/Compliance-DJP%20Coretax%20%26%20e--Faktur-gold.svg)](https://airiv.id)
+Statutory DJP Coretax, e-Faktur 4.0, PPN 12%, DPP Nilai Lain, and NSFP Allocator for Odoo 18
 
-A comprehensive commercial taxation and VAT compliance engine developed specifically for **Odoo 18.0 Community Edition**. Built to support the latest Directorate General of Taxes (**Direktorat Jenderal Pajak - DJP**) regulations, including **UU HPP No. 7/2021** (statutory PPN 12%), **PMK 136/2023** (16-Digit NPWP & NIK integration), DPP Nilai Lain mechanisms, automated NSFP (Nomor Seri Faktur Pajak) quota pooling, and DJP e-Faktur 4.0 / Coretax CSV batch exports.
+## Odoo Apps Store
 
----
+This repository contains the Odoo 18 module package for `airiv_tax_indonesia`.
 
-## Detailed Statutory Features
+Required store assets are maintained in:
 
-### 1. Statutory PPN 12% & DPP Nilai Lain Architecture
-* **PPN 12% Statutory Rate**: Pre-configured standard sales (Keluaran) and purchase (Masukan) VAT fixtures linked to Indonesian tax groups.
-* **DPP Nilai Lain Engine**: Supports transactions utilizing deemed tax bases (freight, logistics, services) with statutory effective rates:
-  $$\text{DPP Nilai Lain} = \text{Gross Amount} \times \frac{11}{12}$$
-  $$\text{Effective PPN Payable} = \text{DPP Nilai Lain} \times 12\% = \text{Gross Amount} \times 11\%$$
-* **Transaction Code Mapping**: Full support for standard DJP transaction prefixes:
-  * `01`: Penyerahan BKP/JKP kepada Pihak Bukan Pemungut PPN.
-  * `02`: Penyerahan kepada Pemungut Bendaharawan Pemerintah.
-  * `03`: Penyerahan kepada Pemungut BUMN / Badan Usaha Tertentu.
-  * `04`: Penyerahan menggunakan DPP Nilai Lain.
-  * `05`: Penyerahan Besaran Tertentu (Pasal 9A UU PPN).
-  * `07`: Penyerahan yang PPN-nya Tidak Dipungut (Kawasan Berikat).
-  * `08`: Penyerahan yang Dibebaskan dari Pengenaan PPN.
+```text
+airiv_tax_indonesia/static/description/
+  icon.png
+  banner.png
+  index.html
+```
 
-### 2. 16-Digit NPWP & NIK Validation (Coretax / PMK 136/2023)
-* **WPOP Integration**: Automatic validation of 16-digit Indonesian National Identity Numbers (NIK) functioning as the primary Tax ID for individual taxpayers (*Wajib Pajak Orang Pribadi*).
-* **WP Badan & NITKU**: Enforces 16-digit corporate NPWP validation alongside 22-digit Nomor Identitas Tempat Kegiatan Usaha (NITKU) for branch offices.
-* **Retail & Non-NPWP Handling**: Supports zero-padded identifiers (`0000000000000000`) for end-consumer transactions.
+## Technical
 
-### 3. NSFP Serial Number Management & Auto-Allocation
-* **e-Nofa Allocation Pools**: Register tax serial ranges granted by DJP (Start Serial, End Serial, Year).
-* **Sequential Auto-Assignment**: Invoices automatically draw the next sequential NSFP upon invoice validation.
-* **Quota Tracking**: Real-time progress tracking of used versus remaining serial quota.
+- Odoo version: `18.0.1.0.0`
+- License: `LGPL-3`
+- Author: `Riv Cloud Management`
+- Website: `https://airiv.id`
 
-### 4. DJP e-Faktur 4.0 & Coretax CSV Batch Exporter
-* **FK (Faktur Pajak Header)**: Header metadata, transaction codes, invoice dates, NPWP, SPPKP names, DPP, and PPN values.
-* **LT (Lawan Transaksi)**: Customer tax profile address records.
-* **OF (Objek Faktur)**: Line-item product code, unit price, quantity, DPP, and VAT details formatted for direct batch upload into DJP e-Faktur desktop application and Coretax web portal.
+## Quality Gate
 
----
-
-## Validated Commercial Tax Workflow (Tested & Scrutinized)
-
-The end-to-end tax compliance engine has been verified under live Odoo 18.0 Community conditions:
-
-1. **Tax Profile Verification**: Customer `PT Nusantara Coretax Mandiri` configured with 16-digit NPWP `0123456789012345` and 22-digit NITKU `0123456789012345000000`.
-2. **Quotation & Tax Computation**: Customer Invoice created with taxable service (DPP: **Rp 10.000.000,00**), calculating statutory 12% PPN Keluaran (**Rp 1.200.000,00**) for a gross total of **Rp 11.200.000,00**.
-3. **Automated NSFP Allocation**: Upon posting, the next active serial from the 2026 pool (`S-00129/PJ.02/2026`) is automatically assigned as `01.000-26.00000001`.
-4. **Batch CSV Export**: The e-Faktur Export Wizard successfully compiles standard `FK` and `OF` rows into `eFaktur_DJP_Export_20260827.csv`, ready for batch upload to the DJP Coretax portal.
-
----
-
-## Module Specifications
-
-| Specification | Details |
-| :--- | :--- |
-| **Framework Version** | Odoo 18.0 Community Edition (OWL client & App Drawer compliant) |
-| **License** | GNU Lesser General Public License v3.0 (LGPL-3) |
-| **Price** | Free ($0.00) |
-| **Dependencies** | `account`, `base` |
-| **Server Overhead** | Zero (Native ORM, direct CSV stream, no middleware) |
-| **DJP Specifications** | UU HPP No. 7/2021, PMK 136/2023, DJP e-Faktur 4.0 |
+GitHub Actions runs the AIRIV Odoo Apps Store CI audit on branch `18.0`.

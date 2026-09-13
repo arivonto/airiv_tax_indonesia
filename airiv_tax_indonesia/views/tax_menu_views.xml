@@ -16,9 +16,9 @@
         </record>
 
         <menuitem id="menu_airiv_tax_root"
-                  name="Indonesian Taxation"
-                  action="action_account_move_faktur_pajak"
-                  web_icon="airiv_tax_indonesia,static/description/icon.png"
+                  name="AIRIV Indonesian Taxation"
+                  action="airiv_os_core.action_airiv_launchpad_taxation"
+                  web_icon="airiv_tax_indonesia,static/description/airiv_store_icon_128.png"
                   sequence="38"
                   groups="account.group_account_invoice"/>
 

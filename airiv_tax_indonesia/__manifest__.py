@@ -14,10 +14,11 @@ Indonesia Commercial Taxation & DJP Coretax Engine for Odoo 18 Community.
 """,
     'author': 'Riv Cloud Management',
     'website': 'https://airiv.id',
+    'url': 'https://github.com/arivonto/airiv_tax_indonesia/blob/18.0/static/description/index.html',
     'license': 'LGPL-3',
     'price': 0.0,
     'currency': 'EUR',
-    'depends': ['account', 'base'],
+    'depends': ['account', 'base', 'airiv_os_core'],
     'data': [
         'security/ir.model.access.csv',
         'data/tax_data.xml',
