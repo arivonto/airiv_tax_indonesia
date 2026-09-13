@@ -12,7 +12,7 @@ Indonesia Commercial Taxation & DJP Coretax Engine for Odoo 18 Community.
 - DJP e-Faktur 4.0 & Coretax CSV batch export (FK, LT, OF schema)
 - Zero External Server Overhead - 100% Odoo 18 Community Native
 """,
-    'author': 'Riv Cloud Management',
+    'author': 'AIRIV',
     'website': 'https://airiv.id',
     'url': 'https://github.com/arivonto/airiv_tax_indonesia/blob/18.0/static/description/index.html',
     'license': 'LGPL-3',
